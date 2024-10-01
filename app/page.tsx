@@ -51,28 +51,28 @@ export default function Home() {
   const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
 
   
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        fetchWeatherByCoords(position.coords.latitude, position.coords.longitude);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       fetchWeatherByCoords(position.coords.latitude, position.coords.longitude);
+  //     });
+  //   }
+  // }, []);
 
-  const fetchWeatherByCoords = async (lat: number, lon: number) => {
-    setLoading(true);
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
-      );
-      const data = await response.json();
-      setWeather(data);
-    } catch (err) {
-      setError('Failed to fetch weather data for your location.');
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const fetchWeatherByCoords = async (lat: number, lon: number) => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await fetch(
+  //       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
+  //     );
+  //     const data = await response.json();
+  //     setWeather(data);
+  //   } catch (err) {
+  //     setError('Failed to fetch weather data for your location.');
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const fetchWeather = async (cityName: string) => {
     setLoading(true);
