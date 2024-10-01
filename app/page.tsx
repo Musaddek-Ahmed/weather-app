@@ -48,7 +48,7 @@ export default function Home() {
   const [aqi, setAqi] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const apiKey = process.env.OPENWEATHER_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
 
   
   useEffect(() => {
