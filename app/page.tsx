@@ -48,6 +48,8 @@ export default function Home() {
   const [aqi, setAqi] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const apiKey = process.env.OPENWEATHER_API_KEY;
+
   
   useEffect(() => {
     if (navigator.geolocation) {
@@ -61,7 +63,7 @@ export default function Home() {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
       );
       const data = await response.json();
       setWeather(data);
@@ -79,7 +81,7 @@ export default function Home() {
     setForecast([]);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`
       );
       if (!response.ok) {
         throw new Error('City not found');
@@ -98,7 +100,7 @@ export default function Home() {
   const fetchAirQuality = async (lat: number, lon: number) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
       );
       const data = await response.json();
       setAqi(data.list[0].main.aqi); // Set AQI
@@ -110,7 +112,7 @@ export default function Home() {
   const fetchForecast = async (cityName: string) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=${apiKey}`
       );
       const data = await response.json();
       setForecast(data.list.filter((item: ForecastData, index: number) => index % 8 === 0)); // Filter to get 5 days' forecast
