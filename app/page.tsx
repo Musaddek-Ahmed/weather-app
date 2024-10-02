@@ -287,11 +287,13 @@ export default function Home() {
       </p>
 
       {/* Air Quality Index */}
-      {aqi && (
-        <p className="text-lg mt-4 flex items-center">
-          <span className="mr-2 text-green-500">🟢</span> Air Quality Index: {aqi} ({getAqiDescription(aqi)})
-        </p>
-      )}
+      {aqi ? (
+   <p className="text-lg mt-4 flex items-center">
+     <span className="mr-2 text-green-500">🟢</span> Air Quality Index: {aqi} ({getAqiDescription(aqi)})
+   </p>
+ ) : (
+   <p className="text-md text-red-500 mt-4 flex items-center">AQI data is unavailable at the moment.</p>
+)}
       {weather.alerts && (
         <div className="mt-4">
           <h3 className="text-xl font-bold text-red-700 flex items-center">
