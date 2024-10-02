@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { WiDaySunny, WiRain, WiCloud, WiWindy } from 'react-icons/wi';
+import { WiDaySunny, WiRain, WiCloud, WiWindy, WiSnow } from 'react-icons/wi';
 import { FaWind, FaSun, FaCloudSun, FaCloudMoon, FaExclamationTriangle } from 'react-icons/fa';
 
 interface WeatherData {
@@ -140,6 +140,8 @@ export default function Home() {
         return <WiCloud size={80} />;
       case 'wind':
         return <WiWindy size={80} />;
+      case 'snow': 
+        return <WiSnow size={80} />;
       default:
         return <WiDaySunny size={80} />;
     }
@@ -162,6 +164,8 @@ export default function Home() {
         return '/images/cloudy.jpg';
       case 'wind':
         return '/images/windy.jpg';
+      case 'snow': 
+        return '/images/snowy.jpg';
       default:
         return '/images/clear.jpg';
     }
