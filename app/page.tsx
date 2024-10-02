@@ -133,17 +133,17 @@ export default function Home() {
   const getWeatherIcon = (condition: string) => {
     switch (condition.toLowerCase()) {
       case 'clear':
-        return <WiDaySunny size={80} />;
+        return <WiDaySunny size={80} className='text-orange-500' />;
       case 'rain':
-        return <WiRain size={80} />;
+        return <WiRain size={80} className='text-blue-600'/>;
       case 'clouds':
-        return <WiCloud size={80} />;
+        return <WiCloud size={80} className='text-gray-600'/>;
       case 'wind':
-        return <WiWindy size={80} />;
+        return <WiWindy size={80} className='text-slate-400'/>;
       case 'snow': 
-        return <WiSnow size={80} />;
+        return <WiSnow size={80} className='text-blue-400'/>;
       default:
-        return <WiDaySunny size={80} />;
+        return <WiDaySunny size={80} className='text-orange-500'/>;
     }
   };
 
@@ -345,7 +345,7 @@ export default function Home() {
                 <div className="grid sm:grid-cols-5 grid-cols-3 gap-4">
                   {forecast.map((day, index) => (
                     <div key={index} className="flex flex-col items-center text-center bg-white bg-opacity-90 text-gray-800 p-4 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
-                      <p className="font-semibold sm:text-xl text-sm mb-2">{new Date(day.dt_txt).toLocaleDateString('en-US', { weekday: 'long' })}</p>
+                      <p className="font-semibold sm:text-xl text-sm mb-2px-1">{new Date(day.dt_txt).toLocaleDateString('en-US', { weekday: 'long' })}</p>
                       {getWeatherIcon(day.weather[0].main)}
                       <p className="sm:text-lg text-xs font-semibold mt-2">{day.main.temp}°C</p>
                     </div>
