@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { WiDaySunny, WiRain, WiCloud, WiWindy } from 'react-icons/wi'; // Import weather icons
+import { WiDaySunny, WiRain, WiCloud, WiWindy } from 'react-icons/wi';
 import { FaWind, FaSun, FaCloudSun, FaCloudMoon, FaExclamationTriangle } from 'react-icons/fa';
 
 interface WeatherData {
@@ -185,7 +185,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex sm:flex-row flex-col justify-between px-8 pt-8 min-h-screen"
+    <div className="flex sm:flex-row flex-col justify-between px-8 pt-8 min-h-screen font-mono"
     style={{
       backgroundImage: weather
         ? `url(${getBackgroundImage(weather.weather[0].main)})`
@@ -197,17 +197,17 @@ export default function Home() {
       <div className='sm:w-[30%] w-full flex flex-col gap-8'>
       <div   className=" w-full h-[30%] p-6 shadow-xl rounded-lg transform hover:scale-105 transition duration-300 ease-in-out"
   style={{
-    background: 'rgba(255, 255, 255, 0.1)', // Semi-transparent background
-    backdropFilter: 'blur(20px)', // Blur effect
+    background: 'rgba(255, 255, 255, 0.1)',
+    backdropFilter: 'blur(20px)', 
   }}>
-        <h2 className="text-2xl font-semibold text-black mb-4 text-center">Search City</h2>
+        <h2 className="text-2xl font-semibold text-black mb-4 text-center font-sans">Search City</h2>
         <form onSubmit={handleSearch} className="mb-6 relative">
   <input
     type="text"
     value={city}
     onChange={(e) => setCity(e.target.value)}
     placeholder="Enter city name"
-    className="p-3 rounded-lg bg-gray-100 w-full focus:ring-4 focus:ring-gray-300 text-gray-700 placeholder-gray-400 shadow-inner pr-12" // Added padding to the right to avoid overlap with the icon
+    className="p-3 rounded-lg font-sans bg-gray-100 w-full focus:ring-4 focus:ring-gray-300 text-gray-700 placeholder-gray-400 shadow-inner pr-12" 
   />
   <button
     type="submit"
@@ -230,15 +230,15 @@ export default function Home() {
   </button>
 </form>
 
-        {loading && <p className="text-center text-blue-800 font-semibold">Loading...</p>}
+        {loading && <p className="text-center text-white font-semibold">Loading...</p>}
         {error && <p className="text-center text-red-800 font-semibold">{error}</p>}
       </div>
 
       <div
   className="w-full p-6 shadow-xl rounded-lg transform hover:scale-105 transition duration-300 ease-in-out"
   style={{
-    background: 'rgba(255, 255, 255, 0.1)', // Semi-transparent background
-    backdropFilter: 'blur(20px)', // Blur effect
+    background: 'rgba(255, 255, 255, 0.8)', // Semi-transparent background
+    backdropFilter: 'blur(90px)', // Blur effect
   }}
 >
   {weather && (
@@ -246,7 +246,7 @@ export default function Home() {
     <div className='flex flex-row justify-between'>
 <div className='flex flex-col gap-4'>
 <p className="text-lg mt-2 font-semibold flex items-center">
-        <FaWind className="mr-2 text-blue-500" /> Wind Speed: {weather.wind.speed} m/s
+        <FaWind className="mr-2 text-blue-700" /> Wind Speed: {weather.wind.speed} m/s
       </p>
       <p className="text-lg mt-1 font-semibold flex items-center">
         <FaCloudSun className="mr-2 text-yellow-500" /> Wind Direction: {weather.wind.deg}°
@@ -280,10 +280,10 @@ export default function Home() {
 
       {/* Sunrise and Sunset */}
       <p className="text-lg mt-2 flex items-center">
-        <FaSun className="mr-2 text-orange-400" /> Sunrise: {new Date(weather.sys.sunrise * 1000).toLocaleTimeString()}
+        <FaSun className="mr-2 text-orange-600" /> Sunrise: {new Date(weather.sys.sunrise * 1000).toLocaleTimeString()}
       </p>
       <p className="text-lg mt-1 flex items-center">
-        <FaCloudMoon className="mr-2 text-purple-400" /> Sunset: {new Date(weather.sys.sunset * 1000).toLocaleTimeString()}
+        <FaCloudMoon className="mr-2 text-purple-700" /> Sunset: {new Date(weather.sys.sunset * 1000).toLocaleTimeString()}
       </p>
 
       {/* Air Quality Index */}
